@@ -13,9 +13,6 @@
             align-items: center;
             justify-content: center;
         }
-        .netdata-chart-row.main-row > div {
-            /*max-width: 200px;*/
-        }
     </style>
 </head>
 <script>
@@ -36,7 +33,7 @@
                 data-after="-360"
                 data-points="360"
                 data-colors="#EE9911"
-                style="max-width: 100px"
+                style="max-width: 150px"
         ></div>
         <div
                 data-netdata="system.cpu"
@@ -48,7 +45,7 @@
                 data-points="360"
                 data-colors="#22AA99"
                 class="cpu-pie"
-                style="max-width: 200px"
+                style="max-width: 300px"
         ></div>
         <div
                 data-netdata="system.ram"
@@ -62,7 +59,7 @@
                 data-points="360"
                 data-colors="#EE9911"
                 class="ram-pie"
-                style="max-width: 100px"
+                style="max-width: 150px"
         ></div>
     </div>
     <!-- Nav tabs -->
@@ -70,10 +67,20 @@
         <li role="presentation" class="active"><a href="#disk" aria-controls="disk" role="tab" data-toggle="tab">Disk</a></li>
         <li role="presentation"><a href="#ram" aria-controls="ram" role="tab" data-toggle="tab">RAM</a></li>
         <li role="presentation"><a href="#cpu" aria-controls="cpu" role="tab" data-toggle="tab">CPU</a></li>
+        <li role="presentation"><a href="#network" aria-controls="network" role="tab" data-toggle="tab">Network</a></li>
+        <li role="presentation"><a href="#health" aria-controls="health" role="tab" data-toggle="tab">Health</a></li>
     </ul>
 
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="disk">
+            <div class="netdata-chart-row">
+                <div data-netdata="system.io" data-dimensions="in" data-chart-library="easypiechart"
+                     data-title="Disk Read" data-before="0" data-after="-360" data-points="360"
+                     data-common-units="system.io.mainhead" style="max-width: 150px;"></div>
+                <div data-netdata="system.io" data-dimensions="out" data-chart-library="easypiechart"
+                     data-title="Disk Write" data-width="11%" data-before="0" data-after="-360" data-points="360"
+                     data-common-units="system.io.mainhead" style="max-width: 150px;"></div>
+            </div>
             <div class="netdata-chart-row">
                 <div
                         data-netdata="disk_space._"
@@ -87,6 +94,11 @@
                         data-decimal-digits="3"
                 ></div>
             </div>
+            <div class="netdata-chart-row">
+                <div data-netdata="system.io" data-width="100%" data-height="180px"
+                     data-dygraph-valuerange="[null, null]" data-before="0" data-after="-360"
+                     data-id="ranczer_system_io" data-colors="" data-decimal-digits="-1"></div>
+            </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="ram">
             <div class="netdata-chart-row">
@@ -99,6 +111,34 @@
             <div class="netdata-chart-row">
                 <div data-netdata="apps.cpu" data-width="100%" data-height="360px" data-dygraph-valuerange="[null, null]"
                      data-before="0" data-after="-360" data-id="ranczer_apps_cpu" data-colors="" data-decimal-digits="-1"></div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="network">
+            <div class="netdata-chart-row">
+                <div data-netdata="system.net" data-dimensions="sent" data-chart-library="easypiechart"
+                     data-title="Net Outbound" data-before="0" data-after="-360" data-points="360"
+                     data-common-units="system.net.mainhead" style="max-width: 150px;"></div>
+                <div data-netdata="system.net" data-dimensions="received" data-chart-library="easypiechart"
+                     data-title="Net Inbound" data-width="11%" data-before="0" data-after="-360" data-points="360"
+                     data-common-units="system.net.mainhead" style="max-width: 150px;"></div>
+            </div>
+            <div class="netdata-chart-row">
+                <div data-netdata="system.net" data-width="100%" data-height="180px"
+                     data-dygraph-valuerange="[null, null]" data-before="0" data-after="-360"
+                     data-id="ranczer_system_net" data-colors="" data-decimal-digits="-1"></div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="health">
+            <div class="netdata-chart-row">
+                <div data-netdata="sensors.coretemp-isa-0001_temperature" data-width="100%" data-height="180px"
+                     data-dygraph-valuerange="[null, null]" data-before="0" data-after="-360"
+                     data-id="ranczer_sensors_coretemp-isa-0001_temperature" data-colors=""
+                     data-decimal-digits="-1" data-title="Temperature sensor"></div>
+            </div>
+            <div class="netdata-chart-row">
+                <div data-netdata="system.uptime" data-width="100%" data-height="180px"
+                     data-dygraph-valuerange="[null, null]" data-before="0" data-after="-360"
+                     data-id="ranczer_system_uptime" data-colors="" data-decimal-digits="-1"></div>
             </div>
         </div>
     </div>
