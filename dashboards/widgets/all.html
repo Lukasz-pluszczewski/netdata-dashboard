@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style type="text/css">
+        .netdata-chart-row.main-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<script>
+  // var netdataTheme = 'default'; // this is white
+  var netdataTheme = 'slate'; // this is dark
+</script>
+<body>
+    <div class="netdata-chart-row main-row">
+        <div
+                data-netdata="disk_space._"
+                data-dimensions="used|reserved for root"
+                data-chart-library="easypiechart"
+                data-title="Disk usage"
+                data-units="GB"
+                data-append-options="GB"
+                data-decimal-digits="2"
+                data-easypiechart-max-value="18.2"
+                data-after="-360"
+                data-points="360"
+                data-colors="#EE9911"
+                style="max-width: 100px"
+        ></div>
+        <div
+                data-netdata="system.cpu"
+                data-chart-library="gauge"
+                data-title="CPU"
+                data-units="%"
+                data-gauge-max-value="100"
+                data-after="-360"
+                data-points="360"
+                data-colors="#22AA99"
+                class="cpu-pie"
+                style="max-width: 200px"
+        ></div>
+        <div
+                data-netdata="system.ram"
+                data-dimensions="used|buffers|active|wired"
+                data-append-options="percentage"
+                data-chart-library="easypiechart"
+                data-title="Used RAM"
+                data-units="%"
+                data-easypiechart-max-value="100"
+                data-after="-360"
+                data-points="360"
+                data-colors="#EE9911"
+                class="ram-pie"
+                style="max-width: 100px"
+        ></div>
+    </div>
+</body>
+<script type="text/javascript" src="/script.js"></script>
+</html>
